@@ -1,4 +1,4 @@
-add_folder <- function(file) paste0("/raw_data/DTH/", file)
+add_folder <- function(file) here("raw_data", "DTH", file)
 
 reader_factory1 <- function(f) {
   function(file, ...) as_tibble(f(add_folder(file), header = TRUE, encoding = "UTF-8", ...))
@@ -15,26 +15,27 @@ read.table2 <- reader_factory2(read.table)
 read_excel2 <- function(file, ...) read_excel(add_folder(file), ...)
 
 
+###
 
-
-
-
-
-
-
-read.csv2 <- function(file, ...) as_tibble(read.csv(paste0("/raw_data/DTH/", file), header = TRUE, encoding = "UTF-8", ...))
+read.csv2 <- function(file, ...) as_tibble(read.csv(here("raw_data", "DTH", file), header = TRUE, encoding = "UTF-8", ...))
 
 fread2 <- function(file, ...) {
-  as_tibble(fread(paste0("/raw_data/DTH/", file), header = TRUE, encoding = "UTF-8", sep = ",", ...))
+  as_tibble(fread(here("raw_data", "DTH", file), header = TRUE, encoding = "UTF-8", sep = ",", ...))
 }
 
 read.table2 <- function(file, ...) {
-  as_tibble(read.table(paste0("/raw_data/DTH/", file), header = TRUE, encoding = "UTF-8", sep = ",", ...))
+  as_tibble(read.table(here("raw_data", "DTH", file), header = TRUE, encoding = "UTF-8", sep = ",", ...))
 }
 
-read_excel2 <- function(file, ...) read_excel(paste0("/raw_data/DTH/", file), ...)
+read_excel2 <- function(file, ...) read_excel(here("raw_data", "DTH", file), ...)
+
+
 
 
 
 ###
+
+
+
+
 
